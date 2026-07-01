@@ -85,9 +85,9 @@
 
 /** Configure the motors speed in different modes */
 #define SPEECH_REMOTE_POWER 60
-#define IR_REMOTE_POWER 80
+#define IR_REMOTE_POWER 30
 #define APP_REMOTE_POWER 100  // Appの移動速度の上限（0〜100）
-#define IR_ROTATE_LIMIT  100  // リモコンの旋回速度（0〜100）
+#define IR_ROTATE_LIMIT  10   // リモコンの旋回速度（0〜100）
 #define APP_ROTATE_LIMIT 100  // Appの旋回速度（0〜100）
 #define LINE_TRACK_POWER 100
 #define OBSTACLE_AVOID_POWER 90
