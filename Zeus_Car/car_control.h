@@ -36,7 +36,7 @@ void carLeft(int8_t power);
 void carRight(int8_t power);
 void carStop();
 void carMove(int16_t angle, int8_t power, int8_t rot=0, bool drift=false);
-void carMoveFieldCentric(int16_t angle, int8_t power, int16_t heading=0, bool drift=false, bool angFlag=false);
+void carMoveFieldCentric(int16_t angle, int8_t power, int16_t heading=0, bool drift=false, bool angFlag=false, uint8_t rotLimit=100);
 void carResetHeading();
 
 #endif // __CAR_CONTROL_H__

@@ -134,7 +134,7 @@ void carMove(int16_t angle, int8_t power, int8_t rot, bool drift) {
   * @param angFlag false, angle of view of field center
   *                true, the angle of view of the car
   */
-void carMoveFieldCentric(int16_t angle, int8_t power, int16_t heading, bool drift, bool angFlag) {
+void carMoveFieldCentric(int16_t angle, int8_t power, int16_t heading, bool drift, bool angFlag, uint8_t rotLimit) {
   int16_t currentHeading = 0;
   int32_t error = 0;
   int32_t offset = 0;
@@ -154,7 +154,7 @@ void carMoveFieldCentric(int16_t angle, int8_t power, int16_t heading, bool drif
 
   if (error > 1 || error < -1) {
     offset += KP * error + KI * errorIntegral + KD * (error - _lastError);
-    rot += max(-100, min(100, offset));
+    rot += max(-(int16_t)rotLimit, min((int16_t)rotLimit, offset));
     errorIntegral += error;
     _lastError = error;
   }

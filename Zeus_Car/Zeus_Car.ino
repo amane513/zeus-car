@@ -86,6 +86,9 @@
 /** Configure the motors speed in different modes */
 #define SPEECH_REMOTE_POWER 60
 #define IR_REMOTE_POWER 80
+#define APP_REMOTE_POWER 100  // Appの移動速度の上限（0〜100）
+#define IR_ROTATE_LIMIT  100  // リモコンの旋回速度（0〜100）
+#define APP_ROTATE_LIMIT 100  // Appの旋回速度（0〜100）
 #define LINE_TRACK_POWER 100
 #define OBSTACLE_AVOID_POWER 90
 #define OBSTACLE_FOLLOW_POWER 90
@@ -277,12 +280,12 @@ void modeHandler()
     break;
   case MODE_REMOTE_CONTROL:
     rgbWrite(MODE_REMOTE_CONTROL_COLOR);
-    carMoveFieldCentric(remoteAngle, remotePower, remoteHeading, remoteDriftEnable);
+    carMoveFieldCentric(remoteAngle, remotePower, remoteHeading, remoteDriftEnable, false, IR_ROTATE_LIMIT);
     lastRemotePower = remotePower;
     break;
   case MODE_APP_CONTROL:
     rgbWrite(MODE_APP_CONTROL_COLOR);
-    carMoveFieldCentric(remoteAngle, remotePower, remoteHeading, appRemoteDriftEnable);
+    carMoveFieldCentric(remoteAngle, remotePower, remoteHeading, appRemoteDriftEnable, false, APP_ROTATE_LIMIT);
     lastRemotePower = remotePower;
     break;
   case MODE_COMPASS_CALIBRATION:
@@ -654,7 +657,7 @@ void onReceive()
   // Joystick
   uint16_t angle = aiCam.getJoystick(REGION_K, JOYSTICK_ANGLE);
   uint8_t power = aiCam.getJoystick(REGION_K, JOYSTICK_RADIUS);
-  // power = map(power, 0, 100, 0, CAR_DEFAULT_POWER);
+  power = map(power, 0, 100, 0, APP_REMOTE_POWER);
 
   if (appRemoteAngle != angle || appRemotePower != power || angle != 0 || power != 0)
   {
