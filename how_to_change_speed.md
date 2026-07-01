@@ -71,12 +71,28 @@ Zeus Car のプログラムは、3 つの追加ライブラリを使います。
 
 ## ステップ4：調整済みプログラムを入手する
 
-すでに速度が調整されたコードを SharePoint Online（SPO）の共有リンクから受け取ります。**パラメータ編集は不要**で、そのまま書き込みに進めます。
+すでに速度が調整されたコードを受け取ります。**パラメータ編集は不要**で、そのまま書き込みに進めます。入手方法は次の 2 つのどちらでも構いません。
+
+### 方法1：SharePoint（SPO）から ZIP をダウンロードする
 
 1. ブラウザで共有リンク **`<SPO共有リンク>`** から ZIP ファイルを **ダウンロード** します。
 2. ダウンロードした ZIP を解凍します。
 3. 解凍したフォルダ内の `Zeus_Car` フォルダにある **`Zeus_Car.ino`** をダブルクリックして Arduino IDE で開きます（同じフォルダ内の他のファイルも自動で一緒に開きます）。
-4. **→ そのまま書き込む場合は第3部（書き込み）へ進みます。速度を自分で微調整したい場合のみ、次の第2部へ進んでください。**
+
+### 方法2：GitHub リポジトリから git clone する
+
+Git を使える方は、以下のリポジトリから直接クローンして入手することもできます。
+
+```
+git clone https://github.com/amane513/zeus-car
+```
+
+- Git を入れていない場合は、リポジトリのページ（`https://github.com/amane513/zeus-car`）を開き、緑色の **「Code」ボタン → 「Download ZIP」** からダウンロードして解凍しても構いません（内容は clone と同じです）。
+- クローン（または解凍）したフォルダ内の `Zeus_Car` フォルダにある **`Zeus_Car.ino`** をダブルクリックして Arduino IDE で開きます（同じフォルダ内の他のファイルも自動で一緒に開きます）。
+
+---
+
+どちらの方法でも、**→ そのまま書き込む場合は第3部（書き込み）へ進みます。速度を自分で微調整したい場合のみ、次の第2部へ進んでください。**
 
 > 公式コードを一から自分で入手して、速度・旋回の独立化まで自力で実装したい上級者は、Appendix G を参照してください（配布コードを使う場合は不要です）。
 
@@ -422,3 +438,4 @@ void carMoveFieldCentric(int16_t angle, int8_t power, int16_t heading, bool drif
 - SunFounder Zeus Car 公式コード：`https://github.com/sunfounder/zeus-car`
 - SunFounder Zeus Car 公式ドキュメント（トップ）：`https://docs.sunfounder.com/projects/zeus-car/ja/latest/index.html`
 - 配布用（調整済み）コード（SharePoint 共有リンク）：`<SPO共有リンク>`
+- 配布用（調整済み）コード（GitHub リポジトリ）：`https://github.com/amane513/zeus-car`
